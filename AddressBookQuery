@@ -1,0 +1,47 @@
+//UC1
+create database address_book;
+use address_book;
+show databases;
+
+//UC2
+
+create table contacts(ID int not null auto_increment PRIMARY KEY,FirstName varchar(50) not null,LastName varchar(50),Address varchar(255),City varchar(50),PhoneNumber double , State varchar(50), Zip double, Email varchar(50));
+desc contacts;
+
+//UC3
+
+insert into contacts(FirstName,LastName,Address,City,PhoneNumber,State,Zip,EMail) values("Mrunal","Gadhave","THEUR","Pune",8862010196,"MH",412201,"mrunalg96@gmail.com");
+insert into contacts(FirstName,LastName,Address,City,PhoneNumber,State,Zip,EMail) values("Jiu","Zende","Hadapsar","Dive",789463145,"MH",412451,"jiu@gmail.com");
+insert into contacts(FirstName,LastName,Address,City,PhoneNumber,State,Zip,EMail) values("Ovee","Zende","Macquarie Fields","Sydney",9922910395,"New South Wales",126351,"ovee@gmail.com");
+insert into contacts(FirstName,LastName,Address,City,PhoneNumber,State,Zip,EMail) values("Tushar","Khandejod","Bhosari","Noida",8862010786,"UP",412301,"tushar@gmail.com");
+select * from contacts;
+
+//UC4
+
+update contacts set Address="Dive" where FirstName="Mrunal";
+update contacts set City="Saswad" where FirstName="Jiu";
+select * from contacts;
+
+//UC5
+
+delete from contacts where FirstName = "Tushar";
+select * from contacts;
+
+//UC6
+
+insert into contacts(FirstName,LastName,Address,City,PhoneNumber,State,Zip,EMail) values("Rudra","Zende","Dive","Pune",8868654123,"MP",411301,"rudra@gmail.com");
+select * from contacts;
+select * from contacts where City="Pune" or State="MH";
+select * from contacts where City="Pune" or State="MP";
+
+//UC7
+
+select count(*) from contacts where City="Pune" or State="MH";
+select count(*) from contacts where City="Pune" or State="MP";
+select count(*) from contacts where City="Pune";
+select count(*) from contacts where City="Dive";
+select count(*) from contacts where City="Saswad";
+select count(*) from contacts where City="Sydney";
+select count(*) from contacts where State="New South Wales";
+select * from contacts order by FirstName ASC;
+select * from contacts where City="Pune" order by FirstName ASC;

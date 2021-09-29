@@ -1,0 +1,265 @@
+//UC1
+
+mysql> create database address_book;
+Query OK, 1 row affected (9.64 sec)
+
+mysql> use address_book;
+Database changed
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| address_book       |
+| information_schema |
+| mysql              |
+| payroll_service    |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+8 rows in set (7.54 sec)
+
+//UC2
+
+mysql> create table contacts(ID int not null auto_increment PRIMARY KEY,FirstName varchar(50) not null,LastName varchar(50),Address varchar(255),City varchar(50),PhoneNumber double , State varchar(50), Zip double, Email varchar(50));
+Query OK, 0 rows affected (11.95 sec)
+
+mysql> desc contacts;
++-------------+--------------+------+-----+---------+----------------+
+| Field       | Type         | Null | Key | Default | Extra          |
++-------------+--------------+------+-----+---------+----------------+
+| ID          | int          | NO   | PRI | NULL    | auto_increment |
+| FirstName   | varchar(50)  | NO   |     | NULL    |                |
+| LastName    | varchar(50)  | YES  |     | NULL    |                |
+| Address     | varchar(255) | YES  |     | NULL    |                |
+| City        | varchar(50)  | YES  |     | NULL    |                |
+| PhoneNumber | double       | YES  |     | NULL    |                |
+| State       | varchar(50)  | YES  |     | NULL    |                |
+| Zip         | double       | YES  |     | NULL    |                |
+| Email       | varchar(50)  | YES  |     | NULL    |                |
++-------------+--------------+------+-----+---------+----------------+
+9 rows in set (1.59 sec)
+
+////UC3
+
+mysql> insert into contacts(FirstName,LastName,Address,City,PhoneNumber,State,Zip,EMail) values("Mrunal","Gadhave","THEUR","Pune",8862010196,"MH",412201,"mrunalg96@gmail.com");
+Query OK, 1 row affected (1.04 sec)
+
+mysql> select * from contacts;
++----+-----------+----------+---------+------+-------------+-------+--------+---------------------+
+| ID | FirstName | LastName | Address | City | PhoneNumber | State | Zip    | Email               |
++----+-----------+----------+---------+------+-------------+-------+--------+---------------------+
+|  1 | Mrunal    | Gadhave  | THEUR   | Pune |  8862010196 | MH    | 412201 | mrunalg96@gmail.com |
++----+-----------+----------+---------+------+-------------+-------+--------+---------------------+
+1 row in set (0.07 sec)
+
+mysql> insert into contacts(FirstName,LastName,Address,City,PhoneNumber,State,Zip,EMail) values("Jiu","Zende","Hadapsar","Dive",789463145,"MH",412451,"jiu@gmail.com");
+Query OK, 1 row affected (0.32 sec)
+
+mysql> insert into contacts(FirstName,LastName,Address,City,PhoneNumber,State,Zip,EMail) values("Ovee","Zende","Macquarie Fields","Sydney",9922910395,"New South Wales",126351,"ovee@gmail.com");
+Query OK, 1 row affected (0.13 sec)
+
+mysql> select * from contacts;
++----+-----------+----------+------------------+--------+-------------+-----------------+--------+---------------------+
+| ID | FirstName | LastName | Address          | City   | PhoneNumber | State           | Zip    | Email               |
++----+-----------+----------+------------------+--------+-------------+-----------------+--------+---------------------+
+|  1 | Mrunal    | Gadhave  | THEUR            | Pune   |  8862010196 | MH              | 412201 | mrunalg96@gmail.com |
+|  2 | Jiu       | Zende    | Hadapsar         | Dive   |   789463145 | MH              | 412451 | jiu@gmail.com       |
+|  3 | Ovee      | Zende    | Macquarie Fields | Sydney |  9922910395 | New South Wales | 126351 | ovee@gmail.com      |
++----+-----------+----------+------------------+--------+-------------+-----------------+--------+---------------------+
+3 rows in set (0.00 sec)
+
+mysql> insert into contacts(FirstName,LastName,Address,City,PhoneNumber,State,Zip,EMail) values("Tushar","Khandejod","Bhosari","Noida",8862010786,"UP",412301,"tushar@gmail.com");
+Query OK, 1 row affected (0.13 sec)
+
+mysql> select * from contacts;
++----+-----------+-----------+------------------+--------+-------------+-----------------+--------+---------------------+
+| ID | FirstName | LastName  | Address          | City   | PhoneNumber | State           | Zip    | Email               |
++----+-----------+-----------+------------------+--------+-------------+-----------------+--------+---------------------+
+|  1 | Mrunal    | Gadhave   | THEUR            | Pune   |  8862010196 | MH              | 412201 | mrunalg96@gmail.com |
+|  2 | Jiu       | Zende     | Hadapsar         | Dive   |   789463145 | MH              | 412451 | jiu@gmail.com       |
+|  3 | Ovee      | Zende     | Macquarie Fields | Sydney |  9922910395 | New South Wales | 126351 | ovee@gmail.com      |
+|  4 | Tushar    | Khandejod | Bhosari          | Noida  |  8862010786 | UP              | 412301 | tushar@gmail.com    |
++----+-----------+-----------+------------------+--------+-------------+-----------------+--------+---------------------+
+4 rows in set (0.05 sec)
+
+mysql> insert into contacts(FirstName,LastName,Address,City,PhoneNumber,State,Zip,EMail) values("Tushar","Khandejod","Bhosari","Noida",8862010786,"UP",412301,"tushar@gmail.com");
+
+//UC4
+
+mysql> update contacts set Address="Dive" where FirstName="Mrunal";
+Query OK, 1 row affected (0.71 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from contacts;
++----+-----------+-----------+------------------+--------+-------------+-----------------+--------+---------------------+
+
+| ID   | FirstName | LastName | Address | City | PhoneNumber | State | Zip  | Email |
+| ---- | --------- | -------- | ------- | ---- | ----------- | ----- | ---- | ----- |
+|      |           |          |         |      |             |       |      |       |
+
++----+-----------+-----------+------------------+--------+-------------+-----------------+--------+---------------------+
+
+| 1    | Mrunal | Gadhave   | Dive             | Pune   | 8862010196 | MH              | 412201 | mrunalg96@gmail.com |
+| ---- | ------ | --------- | ---------------- | ------ | ---------- | --------------- | ------ | ------------------- |
+|      |        |           |                  |        |            |                 |        |                     |
+| 2    | Jiu    | Zende     | Hadapsar         | Dive   | 789463145  | MH              | 412451 | jiu@gmail.com       |
+| ---- | ----   | -----     | --------         | ----   | ---------  | ----            | ------ | -------------       |
+|      |        |           |                  |        |            |                 |        |                     |
+| 3    | Ovee   | Zende     | Macquarie Fields | Sydney | 9922910395 | New South Wales | 126351 | ovee@gmail.com      |
+| ---- | ----   | -----     | ---------------- | ------ | ---------- | --------------- | ------ | --------------      |
+|      |        |           |                  |        |            |                 |        |                     |
+| 4    | Tushar | Khandejod | Bhosari          | Noida  | 8862010786 | UP              | 412301 | tushar@gmail.com    |
+| ---- | ------ | --------- | -------          | -----  | ---------- | ----            | ------ | ----------------    |
+|      |        |           |                  |        |            |                 |        |                     |
+
++----+-----------+-----------+------------------+--------+-------------+-----------------+--------+---------------------+
+4 rows in set (0.02 sec)
+
+mysql> update contacts set City="Saswad" where FirstName="Jiu";
+Query OK, 1 row affected (0.16 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from contacts;
++----+-----------+-----------+------------------+--------+-------------+-----------------+--------+---------------------+
+| ID | FirstName | LastName  | Address          | City   | PhoneNumber | State           | Zip    | Email               |
++----+-----------+-----------+------------------+--------+-------------+-----------------+--------+---------------------+
+|  1 | Mrunal    | Gadhave   | Dive             | Pune   |  8862010196 | MH              | 412201 | mrunalg96@gmail.com |
+|  2 | Jiu       | Zende     | Hadapsar         | Saswad |   789463145 | MH              | 412451 | jiu@gmail.com       |
+|  3 | Ovee      | Zende     | Macquarie Fields | Sydney |  9922910395 | New South Wales | 126351 | ovee@gmail.com      |
+|  4 | Tushar    | Khandejod | Bhosari          | Noida  |  8862010786 | UP              | 412301 | tushar@gmail.com    |
++----+-----------+-----------+------------------+--------+-------------+-----------------+--------+---------------------+
+4 rows in set (0.00 sec)
+
+//UC5
+
+mysql> delete from contacts where FirstName = "Tushar";
+Query OK, 1 row affected (1.10 sec)
+
+mysql> select * from contacts;
++----+-----------+----------+------------------+--------+-------------+-----------------+--------+---------------------+
+| ID | FirstName | LastName | Address          | City   | PhoneNumber | State           | Zip    | Email               |
++----+-----------+----------+------------------+--------+-------------+-----------------+--------+---------------------+
+|  1 | Mrunal    | Gadhave  | Dive             | Pune   |  8862010196 | MH              | 412201 | mrunalg96@gmail.com |
+|  2 | Jiu       | Zende    | Hadapsar         | Saswad |   789463145 | MH              | 412451 | jiu@gmail.com       |
+|  3 | Ovee      | Zende    | Macquarie Fields | Sydney |  9922910395 | New South Wales | 126351 | ovee@gmail.com      |
++----+-----------+----------+------------------+--------+-------------+-----------------+--------+---------------------+
+3 rows in set (0.03 sec)
+
+//UC6
+
+mysql>  insert into contacts(FirstName,LastName,Address,City,PhoneNumber,State,Zip,EMail) values("Rudra","Zende","Dive","Pune",8868654123,"MP",411301,"rudra@gmail.com");
+Query OK, 1 row affected (0.12 sec)
+
+mysql> select * from contacts;
++----+-----------+----------+------------------+--------+-------------+-----------------+--------+---------------------+
+| ID | FirstName | LastName | Address          | City   | PhoneNumber | State           | Zip    | Email               |
++----+-----------+----------+------------------+--------+-------------+-----------------+--------+---------------------+
+|  1 | Mrunal    | Gadhave  | Dive             | Pune   |  8862010196 | MH              | 412201 | mrunalg96@gmail.com |
+|  2 | Jiu       | Zende    | Hadapsar         | Saswad |   789463145 | MH              | 412451 | jiu@gmail.com       |
+|  3 | Ovee      | Zende    | Macquarie Fields | Sydney |  9922910395 | New South Wales | 126351 | ovee@gmail.com      |
+|  6 | Rudra     | Zende    | Dive             | Pune   |  8868654123 | MP              | 411301 | rudra@gmail.com     |
++----+-----------+----------+------------------+--------+-------------+-----------------+--------+---------------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from contacts where City="Pune" or State="MH";
++----+-----------+----------+----------+--------+-------------+-------+--------+---------------------+
+| ID | FirstName | LastName | Address  | City   | PhoneNumber | State | Zip    | Email               |
++----+-----------+----------+----------+--------+-------------+-------+--------+---------------------+
+|  1 | Mrunal    | Gadhave  | Dive     | Pune   |  8862010196 | MH    | 412201 | mrunalg96@gmail.com |
+|  2 | Jiu       | Zende    | Hadapsar | Saswad |   789463145 | MH    | 412451 | jiu@gmail.com       |
+|  6 | Rudra     | Zende    | Dive     | Pune   |  8868654123 | MP    | 411301 | rudra@gmail.com     |
++----+-----------+----------+----------+--------+-------------+-------+--------+---------------------+
+3 rows in set (0.06 sec)
+mysql> select * from contacts where City="Pune" or State="MP";
++----+-----------+----------+---------+------+-------------+-------+--------+---------------------+
+| ID | FirstName | LastName | Address | City | PhoneNumber | State | Zip    | Email               |
++----+-----------+----------+---------+------+-------------+-------+--------+---------------------+
+|  1 | Mrunal    | Gadhave  | Dive    | Pune |  8862010196 | MH    | 412201 | mrunalg96@gmail.com |
+|  6 | Rudra     | Zende    | Dive    | Pune |  8868654123 | MP    | 411301 | rudra@gmail.com     |
++----+-----------+----------+---------+------+-------------+-------+--------+---------------------+
+2 rows in set (0.00 sec)
+
+//UC7
+
+mysql> select count(*) from contacts where City="Pune" or State="MH";
++----------+
+| count(*) |
++----------+
+|        3 |
++----------+
+1 row in set (0.08 sec)
+
+mysql> select count(*) from contacts where City="Pune" or State="MP";
++----------+
+| count(*) |
++----------+
+|        2 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select count(*) from contacts where City="Pune";
++----------+
+| count(*) |
++----------+
+|        2 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select count(*) from contacts where City="Dive";
++----------+
+| count(*) |
++----------+
+|        0 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select count(*) from contacts where City="Saswad";
++----------+
+| count(*) |
++----------+
+|        1 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select count(*) from contacts where City="Sydney";
++----------+
+| count(*) |
++----------+
+|        1 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select count(*) from contacts where State="New South Wales";
++----------+
+| count(*) |
++----------+
+|        1 |
++----------+
+1 row in set (0.00 sec)
+
+//UC8
+
+mysql> select * from contacts order by FirstName ASC;
++----+-----------+----------+------------------+--------+-------------+-----------------+--------+---------------------+
+| ID | FirstName | LastName | Address          | City   | PhoneNumber | State           | Zip    | Email               |
++----+-----------+----------+------------------+--------+-------------+-----------------+--------+---------------------+
+|  2 | Jiu       | Zende    | Hadapsar         | Saswad |   789463145 | MH              | 412451 | jiu@gmail.com       |
+|  1 | Mrunal    | Gadhave  | Dive             | Pune   |  8862010196 | MH              | 412201 | mrunalg96@gmail.com |
+|  3 | Ovee      | Zende    | Macquarie Fields | Sydney |  9922910395 | New South Wales | 126351 | ovee@gmail.com      |
+|  6 | Rudra     | Zende    | Dive             | Pune   |  8868654123 | MP              | 411301 | rudra@gmail.com     |
+|  7 | Vamika    | Zende    | Hadapsar         | Pune   |  8867894123 | MH              | 411001 | Vamika@gmail.com    |
++----+-----------+----------+------------------+--------+-------------+-----------------+--------+---------------------+
+5 rows in set (0.02 sec)
+
+mysql> select * from contacts where City="Pune" order by FirstName ASC;
++----+-----------+----------+----------+------+-------------+-------+--------+---------------------+
+| ID | FirstName | LastName | Address  | City | PhoneNumber | State | Zip    | Email               |
++----+-----------+----------+----------+------+-------------+-------+--------+---------------------+
+|  1 | Mrunal    | Gadhave  | Dive     | Pune |  8862010196 | MH    | 412201 | mrunalg96@gmail.com |
+|  6 | Rudra     | Zende    | Dive     | Pune |  8868654123 | MP    | 411301 | rudra@gmail.com     |
+|  7 | Vamika    | Zende    | Hadapsar | Pune |  8867894123 | MH    | 411001 | Vamika@gmail.com    |
++----+-----------+----------+----------+------+-------------+-------+--------+---------------------+
+3 rows in set (0.00 sec)
+
